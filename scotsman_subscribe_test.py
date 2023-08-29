@@ -21,7 +21,8 @@ def test_scotsman_homepage(setup_browser):
     driver.get(baseURL)
 
     driver.switch_to.frame(1)
-    time.sleep(3)
+
+    time.sleep(2)
 
     element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '#notice > div.message-component.message-row.unstack > button.message-component.message-button.no-children.focusable.sp_choice_type_11.last-focusable-el')))
     element.click()
@@ -29,19 +30,19 @@ def test_scotsman_homepage(setup_browser):
     driver.switch_to.default_content()
 
     page_title = driver.title
-    assert "Home | The Scotsman" in page_title, f"Expected 'Home | The Scotsman' in title, but got {page_title}"
+    assert "Latest News | The Scotsman" in page_title, f"Expected 'Latest News | The Scotsman' in title, but got {page_title}"
 
-    time.sleep(3)
+    time.sleep(7)
 
     subscribe_button_selector = "div[class='Header__PrimaryTopMenu-sc-1vz791g-12 bSkENH'] span[class='ProfileOptions__Subscribe-sc-1x2z2a7-2 iXvHqf']"
     subscribe_button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, subscribe_button_selector)))
     subscribe_button.click()
 
-    time.sleep(3)
+    time.sleep(2)
 
     WebDriverWait(driver, 20).until(EC.title_contains("Subscribe | The Scotsman"))
 
-    time.sleep(3)
+    time.sleep(2)
 
     driver.switch_to.frame(0)
 
@@ -50,21 +51,9 @@ def test_scotsman_homepage(setup_browser):
     )
     buy_now_button.click()
 
+    time.sleep(5)
+
     driver.switch_to.default_content()
 
-    time.sleep(3)
-
-    # driver.switch_to.frame(0)
-    #
-    # driver.find_element(By.CSS_SELECTOR, "input[aria-label='email']").send_keys("bunmi.ogundare@nationalworld.com")
-    # driver.find_element(By.CSS_SELECTOR, "input[aria-label='password']").send_keys("Testing2023")
-    # driver.find_element(By.CSS_SELECTOR, "input[aria-label='first name']").send_keys("David")
-    # driver.find_element(By.CSS_SELECTOR, "input[aria-label='last name']").send_keys("Paul")
-    #
-    # driver.switch_to.default_content()
-    #
-    # time.sleep(3)
-
     driver.quit()
-
 
