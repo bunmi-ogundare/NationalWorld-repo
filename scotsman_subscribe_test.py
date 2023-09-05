@@ -55,5 +55,7 @@ def test_scotsman_homepage(setup_browser):
 
     driver.switch_to.default_content()
 
+    driver.save_screenshot("C:\\Users\\bunmi.ogundare\\Desktop\\scotsman_test_screenshot.png")
+
     driver.quit()
 
